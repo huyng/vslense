@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .Camera
-        presentViewController(imagePicker, animated: false, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
 
     }
     
@@ -29,13 +29,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.allowsEditing = false
         imagePicker.delegate = self
         imagePicker.sourceType = .PhotoLibrary
-        presentViewController(imagePicker, animated: false, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
 
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         currentImageView.image = info[UIImagePickerControllerOriginalImage] as! UIImage?
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        let cgimg = currentImageView.image?.CGImage
+        let pex = PixelExtractor.init(img: cgimg!)
+        print("image size is \(pex.height) x \(pex.width)")
+
+//        let uncasted_data = CGBitmapContextGetData(pex.context)
+//        let data = UnsafePointer<UInt8>(uncasted_data)
+//        for y in 0..<pex.height {
+//            for x in 0..<pex.width {
+//                print(y,",",x)
+//            }
+//        }
+
+        
+        
     }
 
 
