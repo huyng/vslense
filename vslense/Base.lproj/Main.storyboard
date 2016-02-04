@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="vslense" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,64 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oan-gW-fwT">
+                                <rect key="frame" x="20" y="538" width="560" height="42"/>
+                                <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dsB-zS-n6q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Camera">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressCameraPreview" destination="BYZ-38-t0r" eventType="touchUpInside" id="qPx-qj-xKV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFG-Ei-dII">
+                                <rect key="frame" x="20" y="478" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.19764187932014465" green="0.39637097716331482" blue="0.65519773960113525" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BHE-zR-CMY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Photo Library">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressPhotoLibraryPicker" destination="BYZ-38-t0r" eventType="touchUpInside" id="9df-u4-4bb"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-cL-IxN">
+                                <rect key="frame" x="103" y="28" width="394" height="344"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12034289514516057" green="0.29326313997874986" blue="0.52428488756613756" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Oan-gW-fwT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9hk-hf-gt6"/>
+                            <constraint firstItem="z8T-cL-IxN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Arq-dK-Ffb"/>
+                            <constraint firstItem="UFG-Ei-dII" firstAttribute="centerX" secondItem="Oan-gW-fwT" secondAttribute="centerX" id="CVk-MG-v1L"/>
+                            <constraint firstItem="z8T-cL-IxN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="FET-pv-0m0"/>
+                            <constraint firstItem="Oan-gW-fwT" firstAttribute="top" secondItem="UFG-Ei-dII" secondAttribute="bottom" constant="14" id="Snx-gN-Tv3"/>
+                            <constraint firstItem="UFG-Ei-dII" firstAttribute="width" secondItem="Oan-gW-fwT" secondAttribute="width" id="UNo-5R-pxH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z8T-cL-IxN" secondAttribute="trailing" constant="10" id="eIr-bb-Ofl"/>
+                            <constraint firstItem="UFG-Ei-dII" firstAttribute="top" secondItem="z8T-cL-IxN" secondAttribute="bottom" constant="40" id="iLE-2F-YAS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oan-gW-fwT" secondAttribute="trailing" id="qZ5-Xc-Tcm"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Oan-gW-fwT" secondAttribute="bottom" constant="20" id="yBb-45-LrL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentImageView" destination="z8T-cL-IxN" id="yTa-8c-KF8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="342"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="201" height="201"/>
+    </resources>
 </document>

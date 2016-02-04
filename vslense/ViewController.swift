@@ -8,11 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var imagePicker:UIImagePickerController!
+
+    @IBOutlet weak var currentImageView: UIImageView!
+    
+    @IBAction func didPressCameraPreview() {
+        print("camera preview")
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        presentViewController(imagePicker, animated: false, completion: nil)
+
+    }
+    
+    @IBAction func didPressPhotoLibraryPicker(){
+        print("photo lib")
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: false, completion: nil)
+
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        currentImageView.image = info[UIImagePickerControllerOriginalImage] as! UIImage?
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
